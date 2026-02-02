@@ -2,7 +2,11 @@ from fastapi import FastAPI, Request, Header, HTTPException
 from pydantic import BaseModel
 from datetime import datetime
 
-app = FastAPI()
+app = FastAPI(
+    title="DECOYRA",
+    description="Agentic Honeypot API for detecting credential abuse and scam activity",
+    version="1.0.0"
+)
 
 API_KEY = "guvi-secret-key-123"
 LOG_FILE = "attacks.log"
@@ -174,4 +178,5 @@ def get_stats():
         pass
 
     return stats
+
 
