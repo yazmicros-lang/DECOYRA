@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, Request, Header, HTTPException
 from pydantic import BaseModel
 from datetime import datetime
@@ -8,7 +9,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
-API_KEY = "guvi-secret-key-123"
+API_KEY = os.getenv("API_KEY", "dev-fallback-key")
 LOG_FILE = "attacks.log"
 
 
@@ -178,6 +179,7 @@ def get_stats():
         pass
 
     return stats
+
 
 
 
